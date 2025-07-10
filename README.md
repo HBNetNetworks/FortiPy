@@ -2,6 +2,13 @@
 
 **FortiPy** is a Python wrapper for the FortiOS API, designed to simplify automation and integration with Fortinet devices. It provides a clean, Pythonic interface to interact with FortiGate firewalls.
 
+## Disclaimer
+
+This project is an **independent, community-developed Python wrapper** for Fortinet APIs. It is **not affiliated with, maintained by, or endorsed by Fortinet, Inc.**
+
+All product names, logos, and trademarks used in this project are the property of their respective owners. "Fortinet", "FortiGate", and other associated names are trademarks or registered trademarks of Fortinet, Inc., used here solely for descriptive and interoperability purposes under fair use.
+
+
 ## Features
 
 - Access and manage FortiOS devices via API  
