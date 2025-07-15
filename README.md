@@ -1,6 +1,6 @@
-# FortiPy
+# Fortiner Wrapper
 
-**FortiPy** is a Python wrapper for the FortiOS API, designed to simplify automation and integration with Fortinet devices. It provides a clean, Pythonic interface to interact with FortiGate firewalls.
+**Fortinet Wrapper** is a Python wrapper for the FortiOS API, designed to simplify automation and integration with Fortinet devices. It provides a clean, Pythonic interface to interact with FortiGate firewalls.
 
 ## Disclaimer
 
@@ -18,13 +18,13 @@ All product names, logos, and trademarks used in this project are the property o
 
 ## Installation
 
-    pip install fortipy
+    pip install fortinet-wrapper
 
 ## Usage
 
 Basic example:
 
-    from fortipy import FortiOS
+    from fortiner-wrapper import FortiOS
 
     # Initialize connection
     fortigate = FortiOS(host='192.168.1.99', token='your-api-token')
@@ -50,4 +50,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-© 2025 Jaco
+© 2025 HBNet Networks

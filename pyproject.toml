@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forticonfetti"
+version = "0.1.0"
+description = "FortiConfetti: break down your FortiGate config into JSON bits."
+readme = "README.md"
+authors = [
+  { name="HBNet Networks", email="jaco@hbnet.tech" }
+]
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.7"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/HNBetNetworks/forticonfetti"
+Repository = "https://github.com/HNBetNetworks/forticonfetti"
+Issues = "https://github.com/HNBetNetworks/forticonfetti/issues"
+
+[tool.setuptools]
+packages = ["forticonfetti"]
+
+[tool.setuptools.package-data]
+forticonfetti = ["py.typed"]
+
+[tool.setuptools.exclude-package-data]
+forticonfetti = ["*.conf", "*.bak"]

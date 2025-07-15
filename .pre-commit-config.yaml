@@ -1,0 +1,8 @@
+repos:
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        name: Check for missing docstrings
+        args: [--select=D100,D101,D102]
+        #files: ^python/fortinet-wrapper/.*\.py$
