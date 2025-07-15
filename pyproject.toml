@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "forticonfetti"
+name = "fortinet_wrapper"
 version = "0.1.0"
-description = "FortiConfetti: break down your FortiGate config into JSON bits."
+description = "fortinet_wrapper: Fortinet Wrapper** is a Python wrapper for the FortiOS API."
 readme = "README.md"
 authors = [
   { name="HBNet Networks", email="jaco@hbnet.tech" }
@@ -15,15 +15,15 @@ requires-python = ">=3.7"
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/HNBetNetworks/forticonfetti"
-Repository = "https://github.com/HNBetNetworks/forticonfetti"
-Issues = "https://github.com/HNBetNetworks/forticonfetti/issues"
+Homepage = "https://github.com/HNBetNetworks/fortinet-wrapper"
+Repository = "https://github.com/HNBetNetworks/fortinet-wrapper"
+Issues = "https://github.com/HNBetNetworks/fortinet-wrapper/issues"
 
 [tool.setuptools]
-packages = ["forticonfetti"]
+packages = ["fortinet_wrapper"]
 
 [tool.setuptools.package-data]
-forticonfetti = ["py.typed"]
+fortiner_wrapper = ["py.typed"]
 
 [tool.setuptools.exclude-package-data]
-forticonfetti = ["*.conf", "*.bak"]
+fortiner_wrapper = ["*.conf", "*.bak"]

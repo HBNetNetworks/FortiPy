@@ -11,10 +11,10 @@ All product names, logos, and trademarks used in this project are the property o
 
 ## Features
 
-- Access and manage FortiOS devices via API  
-- Designed for easy extension to support FortiManager, FortiSwitch, and FortiAnalyzer in future releases  
-- Simplifies common network automation tasks  
-- Supports Python 3.6+  
+- Access and manage FortiOS devices via API
+- Designed for easy extension to support FortiManager, FortiSwitch, and FortiAnalyzer in future releases
+- Simplifies common network automation tasks
+- Supports Python 3.6+
 
 ## Installation
 
@@ -35,10 +35,10 @@ Basic example:
 
 ## Roadmap
 
-- Add FortiManager API support  
-- Add FortiSwitch API support  
-- Add FortiAnalyzer API support  
-- Improved error handling and logging  
+- Add FortiManager API support
+- Add FortiSwitch API support
+- Add FortiAnalyzer API support
+- Improved error handling and logging
 
 ## Contributing
 

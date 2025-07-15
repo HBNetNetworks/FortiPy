@@ -6,7 +6,8 @@ Description:
     Loads and stores the config for this project.
 
 Usage:
-    This module can be imported to access configuration variables or utility functions:
+    This module can be imported to access configuration variables
+        or utility functions:
         import config
         print(<your_module_name>.SOME_CONSTANT)
 
@@ -18,8 +19,9 @@ Created: YYYY-MM-DD
 Last Modified: YYYY-MM-DD
 """
 
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
 
 load_dotenv()  # load vars from .env into environment
 
