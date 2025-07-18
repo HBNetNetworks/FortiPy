@@ -2,10 +2,12 @@
 examples/
 
 # Ignore Python virtual environment
-python/venv/
+venv/
 
 # Ignore Python bytecode caches (globally)
 __pycache__/
 *.py[cod]
 
 .vscode/
+
+dev.env

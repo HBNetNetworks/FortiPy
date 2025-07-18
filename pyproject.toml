@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "fortinet_wrapper: Fortinet Wrapper** is a Python wrapper for the FortiOS API."
 readme = "README.md"
 authors = [
-  { name="HBNet Networks", email="jaco@hbnet.tech" }
+  { name="HBNet Networks", email="dev@hbnet.tech" }
 ]
 license = { text = "GPL-3.0-or-later" }
 requires-python = ">=3.7"
