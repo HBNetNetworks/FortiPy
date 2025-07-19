@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fortinet_wrapper"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fortinet Wrapper is a Python wrapper for the FortiOS API."
 readme = "README.md"
 authors = [

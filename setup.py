@@ -3,8 +3,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="fortinet-wrapper",
-    version="0.1.0",
+    name="fortinet_wrapper",
+    version="0.1.1",
     description="A Python wrapper for Fortinet API",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
