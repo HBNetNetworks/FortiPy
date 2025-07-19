@@ -1,5 +1,6 @@
 # Ignore example files
-examples/
+/examples
+/API
 
 # Ignore Python virtual environment
 venv/
@@ -9,5 +10,9 @@ __pycache__/
 *.py[cod]
 
 .vscode/
+.DS_Store
 
 dev.env
+
+main.py
+extract-tree.sh

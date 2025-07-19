@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fortinet_wrapper"
 version = "0.1.0"
-description = "fortinet_wrapper: Fortinet Wrapper** is a Python wrapper for the FortiOS API."
+description = "Fortinet Wrapper is a Python wrapper for the FortiOS API."
 readme = "README.md"
 authors = [
   { name="HBNet Networks", email="dev@hbnet.tech" }
@@ -20,10 +20,36 @@ Repository = "https://github.com/HNBetNetworks/fortinet-wrapper"
 Issues = "https://github.com/HNBetNetworks/fortinet-wrapper/issues"
 
 [tool.setuptools]
+package-dir = {"" = "src"}
 packages = ["fortinet_wrapper"]
 
+
 [tool.setuptools.package-data]
-fortiner_wrapper = ["py.typed"]
+fortinet_wrapper = ["py.typed"]
 
 [tool.setuptools.exclude-package-data]
-fortiner_wrapper = ["*.conf", "*.bak"]
+fortinet_wrapper = ["*.conf", "*.bak"]
+
+[tool.ruff]
+line-length = 88
+lint.select = [
+  "E",
+  "F",
+  "W",
+  "C",
+  "D",
+  "B",
+  "I",
+  "FBT"
+]
+exclude = [
+  "__init__.py"
+]
+lint.extend-ignore = [
+  "D107",  # Missing docstring in __init__
+  "D400",  # First line should end with period
+  "D415",  # First line should end with a period (redundant with D400 in some tools)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
