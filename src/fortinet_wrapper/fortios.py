@@ -1,14 +1,13 @@
-"""Module Name: config.py
+"""Module Name: fortios.py
 
-Project Name: fortinet-wrapper
+Project Name: fortinet_wrapper
 
 Description:
-    Loads and stores the config for this project.
+    Represents an instance of a FortiOS device.
 
 Usage:
-    This module can be imported to access configuration variables
-        or utility functions:
-        import config
+    This module can be imported to create an instance of this class:
+        from fortinet_wrapper.fortios import FortiOS
 
 Author: HBNet Networks
 """
@@ -41,23 +40,95 @@ class FortiOS():
     For initialization the base URL, API Key and FortiOS version is required.
     """
 
-    # Base values to connect to device
-    base_url = str()
-    api_key = str()
-    verify_ssl = bool()
-    version = FortiOSVersion
-
-    # Public variables
-    system_global = {}
-
     # Private variables
+    _base_url: str
+    _api_key: str
+    _verify_ssl: bool
+    _version: FortiOSVersion
+    _system_global: dict
+    _hostname: str
+    _serial: str
     _base_headers = {
         'Accept' : 'application/json',
         'Authorization' : str()
         }
 
     # Device structures
-    interfaces = {}
+    _interfaces = {}
+
+    # === Public properties start here ===
+
+    @property
+    def base_url(self) -> str:
+        """Base URL of the device API
+
+        Returns:
+            str: Base URL of the device API
+
+        """
+        return self._base_url
+
+    @property
+    def api_key(self) -> str:
+        """API Key for authentication
+
+        Returns:
+            str: API Key for authentication
+
+        """
+        return self._api_key
+
+    @property
+    def verify_ssl(self) -> bool:
+        """Verify SSL certificate?
+
+        Returns:
+            bool: True if SSL certificate should be verified, False otherwise
+
+        """
+        return self._verify_ssl
+
+    @property
+    def version(self) -> FortiOSVersion:
+        """FortiOS version
+
+        Returns:
+            FortiOSVersion: Version of the FortiOS
+
+        """
+        return self._version
+
+    @property
+    def hostname(self) -> str:
+        """Hostname of the device
+
+        Returns:
+            str: Hostname of the device
+
+        """
+        return self._system_global.get('results', {}).get('hostname', '')
+
+    @property
+    def serial(self) -> str:
+        """Serial number of the device
+
+        Returns:
+            str: Serial number of the device
+
+        """
+        return self.system_global.get('serial', '')
+
+    @property
+    def system_global(self) -> dict:
+        """System global configuration
+
+        Returns:
+            dict: System global configuration
+
+        """
+        return self._system_global
+
+    # === Public properties end here ===
 
     # === Private methods start here ===
 
@@ -67,8 +138,7 @@ class FortiOS():
             api_key: str,
             version: FortiOSVersion,
             *,
-            verify_ssl: bool = True,
-            get_global: bool = True):
+            verify_ssl: bool = True):
         """Initialize a Fortigate device.
 
         Initializes
@@ -78,7 +148,6 @@ class FortiOS():
             api_key (str, required): API key for authentication.
             version (FortiOSVersion, required): FortiOS version.
             verify_ssl (bool, optional): Verify SSL certificate? Defaults to True.
-            get_global (bool, optional): Get global conf on init? Defaults to True.
 
         Raises:
             ValueError: If required parameters are not specified.
@@ -95,15 +164,15 @@ class FortiOS():
         if not version:
             raise ValueError('FortiOS version is required')
 
-        self.base_url = base_url
-        self.api_key = api_key
-        self.verify_ssl = verify_ssl
-        self.version = version
+        self._base_url = base_url
+        self._api_key = api_key
+        self._verify_ssl = verify_ssl
+        self._version = version
 
+        self._base_headers = self._base_headers.copy()  # Copy base headers
         self._base_headers['Authorization'] = f'Bearer {self.api_key}'
 
-        if get_global: # Retrieve system global information
-            self._get_system()
+        self._get_system()
 
     def _do_get(self, url: str, params: dict | None = None) -> dict:
         """Perform a GET request to device API
@@ -123,7 +192,7 @@ class FortiOS():
             params = {}
 
         request = requests.get(
-            f'{self.base_url}/{url}',
+            f'{self._base_url}/{url}',
             headers=self._base_headers,
             params=params,
             verify=self.verify_ssl, timeout=10
@@ -140,11 +209,14 @@ class FortiOS():
 
         Gets the system global configuration and stores it locally
         """
-        self.system_global = self._do_get(APIURL.GLOBAL.value)
+        try:
+            self._system_global = self._do_get(APIURL.GLOBAL.value) # Get system global
+        except ValueError as e:
+            raise ValueError(f'Failed to get system global configuration: {e}') from e
 
-        self.hostname = self.system_global['results']['hostname']
-        self.version = self.system_global['version']
-        self.serial = self.system_global['serial']
+        self._hostname = self._system_global['results']['hostname']
+        self._version = self._system_global['version']
+        self._serial = self._system_global['serial']
 
     # === Private methods end here ===
 
@@ -157,9 +229,9 @@ class FortiOS():
             dict: System global configuration
 
         """
-        if not self.system_global: # If not already retrieved, get it
+        if not self._system_global: # If not already retrieved, get it
             self._get_system()
-        return self.system_global
+        return self._system_global
 
     def interface(self,name='') -> list:
         """Get interfaces from the device
